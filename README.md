@@ -1,24 +1,47 @@
-# README
+King Mountain
+================
+[Try out production](https://king-mountain.pro/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Earn money by playing.
 
-Things you may want to cover:
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-* Ruby version
+### Build With
+* Ruby 2.3.4
+* Rails 5.1.1
+* Bootstrap 3
+* Deployed on [reg.ru](https://www.reg.ru/)
 
-* System dependencies
+### Installing
+A step by step series of examples that tell you have to get a development env running
 
-* Configuration
+Clone project:
+```
+$ git clone https://github.com/poustovitss/king_mountain.git
+```
 
-* Database creation
+Rename database.yml.example to database.yml:
+```
+$ mv database.yml.example database.yml
+```
 
-* Database initialization
+Set `username` and `password` values right for your db settings in database.yml file.
 
-* How to run the test suite
+Add secrets.yml:
+```
+$ rake secret
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Setup db:
+```
+rails db:create db:migrate db:seed
+```
 
-* Deployment instructions
+Run server:
+```
+rails s
+```
 
-* ...
+### Deployment
+Deployed version: [https://king-mountain.pro/](https://king-mountain.pro/)
