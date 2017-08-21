@@ -1,0 +1,415 @@
+doctype html
+html lang="en"
+  head
+    title Царь Горы
+    meta content=('text/html; charset=UTF-8') http-equiv="Content-Type" /
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+    = favicon_link_tag 'favicon.ico'
+  body
+    .header
+      .container
+        .logo
+          a href=root_path
+            img.home-logo src="#{image_url('home/logo_ru.png')}" /
+        .header_menu_wrap
+          nav.header_menu
+            ul
+              li= link_to '', '#', class: 'glyphicon glyphicon-bell'
+              li
+                a href=root_path Главная
+              li
+                a href='#' О сервисе
+              li
+                a href='#' Контакты
+              - if 'user_signed_in?' && 'current_user.admin?' #TODO fix after user model
+                li
+                  a href='#' Админ
+              - if 'user_signed_in?'
+                li
+                  a href='#' Профиль
+                li= link_to 'Выйти', '#', method: :delete
+                li
+                  button style=("background-color: rgba(255, 255, 255, 0); border-radius: 20px; border-color: #fff;")
+                    a.sign_in href='new_order_path' Деньги
+                    /! <li><a data-toggle="modal" data-target=".bs-example-modal-sm">Вывести</a></li
+              li style=('margin-left: 10px;')
+                = link_to_unless_current image_tag('home/en.png'), locale: 'en'
+                = link_to_unless_current image_tag('home/ru.png'), locale: 'ru'
+          - unless 'user_signed_in?'
+            .header_sign
+              a.sign_up href='#' style=('margin-top: 0;') Регистрация
+              a.sign_in href='#' Войти
+          div
+        .mobile_btn
+          span
+          span
+          span
+        div style=("clear: both;")
+    .main_banner
+      .box-width
+        .main_banner_content_wrap
+          h1.main_banner_title
+            span Онлайн-Игра
+            | Царь горы
+          .main_banner_content
+            | Стань Царем Горы! Выиграй миллионы вложив всего 50 рублей в старт игры.
+            span
+              | Игра не на удачу или везение. Твой выигрыш зависит только от твоих усилий. Играй и получай за это деньги.
+          /! <a href="#" class="main_banner_play_btn">Играть</a
+          a.main_banner_more_btn href='#' style=("color: #30ccf4; background-color: white; padding: 6px 44px; text-decoration: none;") Играть
+          a.main_banner_more_btn href="#" style=("color: white; background-color: rgba(255, 255, 255, 0.03); text-decoration: none;") Подробнее
+        .main_banner_arr_down
+    .promo_block
+      .container
+        h2 Самый лучший способ потратить 50 рублей
+        p Купить вступление в игру Царь Горы и получить возможность пассивного дохода!
+        span style=("display: block; margin: 50px auto 37px auto; width: 490px; border-radius: 100%; height: 490px; background: url('/images/home/main_banner_crop.jpg') no-repeat center; background-size: cover; ")
+        br
+        span ДЕЛАЙ ПРАВИЛЬНЫЙ ВЫБОР
+        a href="#next-block"
+          img alt="" src="#{image_url('home/Layer-1.png')}" /
+    #next-block.gist_block
+      .container
+        h2 Суть игры
+        p style=("padding-bottom: 25px;")
+          | Царь горы – новая перспективная игра, выиграть в которой может любой желающий. Для вступления в игру достаточно сделать один шаг! Купив вступление за 50 рублей, вы становитесь полноценным её участником, которому открываются все дополнения. После этого вы можете начать играть и зарабатывать.
+        p style=("letter-spacing: 0.4px; padding-bottom: 26px;")
+          | Продвижение к вершине осуществляется с помощью заполнения уровней. Система автоматически подбирает вам участников, заполняя ваш уровень. Вы поднимаетесь все выше и все ближе к цели.
+        p style=("padding-bottom: 23px; letter-spacing: 0.5px;") Логика игры построена так, что вы всегда можете обогнать своих соперников, как бы далеко впереди они не находились. Таким образом, каждый участник имеет абсолютно равные шансы на победу. Система не требует от вас совершения дополнительных покупок или приглашения рефералов. Вы можете играть, как вам угодно.
+        p style=("letter-spacing: 0.5px; padding-bottom: 26px;") Вы можете увеличить шансы на победу, докупить провиант или сформировать свою команду для восхождения, которая состоит из медика, проводника, радиста, инструктора. В игре существует реферальная система, благодяря которой достижения новых уровней будет осуществляться ещё быстрее и без каких-либо вложений с каждой траты вашего реферала вы будете получать 5% средств на свой счет.
+        p style=("letter-spacing: 0.4px; padding-bottom: 27px;") Победителем игры становится тот, кто первый достигнет вершины и станет Царем горы. Ему достается главный приз игры. Но это не конец! Игра продолжается и мы ждем новых победителей.
+    .container
+      .start_price_block
+        .start_price_extensions
+          p
+          strong Дополнения
+          .start_price_extensions_item.radio
+            .icon Радист
+            .start_price_extensions_item_price
+              | 50 руб
+            .start_price_extensions_item_check
+              i.start_price_extensions_item_help
+                | ?
+                span.tooltip
+                  | Система уведомлений. Активирует систему оповещения о различных действиях на сайте и профиле пользователя
+          .start_price_extensions_item.guide
+            .icon Проводник
+            .start_price_extensions_item_price
+              | 500 руб.
+            .start_price_extensions_item_check
+              i.start_price_extensions_item_help
+                | ?
+                span.tooltip
+                  | Снижает цену уровня на 5%
+          .start_price_extensions_item.porter
+            .icon Носильщик
+            .start_price_extensions_item_price
+              | 200 руб.
+            .start_price_extensions_item_check
+              i.start_price_extensions_item_help
+                | ?
+                span.tooltip
+                  | Снижает цену провианта на 15%
+          .start_price_extensions_item.helicopter
+            .icon Эвакуационный вертолёт
+            .start_price_extensions_item_price
+              | 2000 руб.
+            .start_price_extensions_item_check
+              i.start_price_extensions_item_help
+                | ?
+                span.tooltip
+                  | Уменьшает штраф на вывод рабочего баланса с 50% на 30%
+    .compare_block
+      .container
+        h3
+          | Царь игры - самая перспективна игра
+          br
+          | по заработку 2017
+        p Звучит самонадеянно? Давайте сравним игру со всеми известной онлайн-рулеткой:
+        .col.compare_block_no
+          .compare_block_col_title Рулетка
+          ul
+            li Победа зависит только от случая
+            li Вы можете опираться только на удачу и интуицию
+            li Азартная игра
+            li Высокая вероятность остаться ни с чем
+            li Казино всегда "в плюсе" и заинтересовано в том, чтобы вы проигрывали
+            li
+          = link_to 'Упустить возможность', 'service_path', data: { confirm: 'Вы уверены?' }, style: 'margin-top: 159px;'
+        .col.compare_block_yes
+          .compare_block_col_title Царь Горы
+          ul
+            li Вы сами контролируете игру
+            li Вы можете пользоваться провиантом, дополнениями и реферальной системой, увеличивая свой шанс на выигрыш
+            li Игра, заработок в которой зависит только от вас
+            li Максимум, что вы можете потерять - 50 рублей, но и это в случае, если покинете игру
+            li Сайт зарабатывает исключительно на комиссиях при оплате при оплате вступления и покупки дополнений, по этому мы заинтересованы, чтобы вы играли и выигрывали
+          a href='new_user_registration_path' Сделать правильный выбор
+    .game_advantages
+      .container
+        h2.top_block_title style=("color: #2fcaf1;") Преимущества игры
+    .container
+      .pluses_block
+        .pluses_block_item
+          span 1
+          img alt="Free" src="#{image_url('home/free1.png')}" /
+          h5 Автоматическая система заработка
+          p Можно зарабатывать, даже не играя
+        .pluses_block_item style=("margin-top: 0px;")
+          span 2
+          img alt="Fast" src="#{image_url('home/fast1.png')}" /
+          h5 Дешевое участие
+          p Потратив 50 рублей можно выиграть миллионы рублей
+        .pluses_block_item
+          span 3
+          img alt="Reliably" src="#{image_url('home/reliably1.png')}" /
+          h5 Реферальная система
+          p Приглашая друзей, вы получаете 5% от всех их покупок и увеличиваете шанс на выигрыш
+    .top_block
+      .container
+        h2.top_block_title Топ-10 партнеров
+        /.top_block_items
+          .top_block_item
+            #b 1
+            - user_first = User.order("balance DESC")[0]
+            - ava = user_first.avatars.last
+            - if ava.nil?
+              img alt="" height="62" src="/images/top-photo.png" width="62" /
+            - else
+              = image_tag ava.image.url(:medium), height: "62", width: "62", style: 'border-radius: 34px;'
+            span
+              = user_first.name
+              br/
+              = user_first.level
+              | уровень
+              br/
+              = user_first.balance
+              | руб.
+          .top_block_item
+            b 2
+            - user_second = User.order("balance DESC")[1]
+            - ava = user_second.avatars.last
+            - if ava.nil?
+              img alt="" height="62" src="/images/top-photo.png" width="62" /
+            - else
+              = image_tag ava.image.url(:medium), height: "62", width: "62", style: 'border-radius: 34px;'
+            span
+              = user_second.name
+              br/
+              = user_second.level
+              | уровень
+              br/
+              = user_second.balance
+              | руб.
+          .top_block_item
+            b 3
+            - user_third = User.order("balance DESC")[2]
+            - ava = user_third.avatars.last
+            - if ava.nil?
+              img alt="" height="62" src="/images/top-photo.png" width="62" /
+            - else
+              = image_tag ava.image.url(:medium), height: "62", width: "62", style: 'border-radius: 34px;'
+            span
+              = user_third.name
+              br/
+              = user_third.level
+              | уровень
+              br/
+              = user_third.balance
+              | руб.
+          .top_block_item
+            b 4
+            - user_fourth = User.order("balance DESC")[3]
+            - ava = user_fourth.avatars.last
+            - if ava.nil?
+              img alt="" height="62" src="/images/top-photo.png" width="62" /
+            - else
+              = image_tag ava.image.url(:medium), height: "62", width: "62" , style: 'border-radius: 34px;'
+            span
+              = user_fourth.name
+              br/
+              = user_fourth.level
+              | уровень
+              br/
+              = user_fourth.balance
+              | руб.
+          .top_block_item
+            b 5
+            - user_fifth = User.order("balance DESC")[4]
+            - ava = user_fifth.avatars.last
+            - if ava.nil?
+              img alt="" height="62" src="/images/top-photo.png" width="62" /
+            - else
+              = image_tag ava.image.url(:medium), height: "62", width: "62", style: 'border-radius: 34px;'
+            span
+              = user_fifth.name
+              br/
+              = user_fifth.level
+              | уровень
+              br/
+              = user_fifth.balance
+              | руб.
+          .top_block_item
+            b 6
+            img alt="" height="62" src="/images/top-photo.png" width="62" /
+            - user_sixth = User.order("balance DESC")[5]
+            span
+              = user_sixth.name
+              br/
+              = user_sixth.level
+              | уровень
+              br/
+              = user_sixth.balance
+              | руб.
+          .top_block_item
+            b 7
+            - user_seventh = User.order("balance DESC")[6]
+            - ava = user_seventh.avatars.last
+            - if ava.nil?
+              img alt="" height="62" src="/images/top-photo.png" width="62" /
+            - else
+              = image_tag ava.image.url(:medium), height: "62", width: "62", style: 'border-radius: 34px;'
+            span
+              = user_seventh.name
+              br/
+              = user_seventh.level
+              | уровень
+              br/
+              = user_seventh.balance
+              | руб.
+          .top_block_item
+            b 8
+            - user_eighth = User.order("balance DESC")[7]
+            - ava = user_eighth.avatars.last
+            - if ava.nil?
+              img alt="" height="62" src="/images/top-photo.png" width="62" /
+            - else
+              = image_tag ava.image.url(:medium), height: "62", width: "62", style: 'border-radius: 34px;'
+            span
+              = user_eighth.name
+              br/
+              = user_eighth.level
+              | уровень
+              br/
+              = user_eighth.balance
+              | руб.
+          .top_block_item
+            b 9
+            - user_nine = User.order("balance DESC")[8]
+            - ava = user_nine.avatars.last
+            - if ava.nil?
+              img alt="" height="62" src="/images/top-photo.png" width="62" /
+            - else
+              = image_tag ava.image.url(:medium), height: "62", width: "62", style: 'border-radius: 34px;'
+            span
+              = user_nine.name
+              br/
+              = user_nine.level
+              | уровень
+              br/
+              = user_nine.balance
+              | руб.
+          .top_block_item
+            b 10
+            - user_ten = User.order("balance DESC")[9]
+            - ava = user_ten.avatars.last
+            - if ava.nil?
+              img alt="" height="62" src="/images/top-photo.png" width="62" /
+            - else
+              = image_tag ava.image.url(:medium), height: "62", width: "62", style: 'border-radius: 34px;'
+            span
+              = user_ten.name
+              br/
+              = user_ten.level
+              | уровень
+              br/
+              = user_ten.balance
+              | руб.
+    .stats_block
+      .container
+        .stats_block_item.users
+          .stats_block_quantity
+            /= User.all.count
+            span пользователей
+          b.stats_block_today
+            /| +#{User.where("created_at >= ?", Time.zone.now.beginning_of_day).size} #{t 'profile.today'}
+        .stats_block_item.online
+          /.stats_block_quantity
+            - getbalance = Getbalance.sum("total")
+            - getmoney = Getmoney.sum("total")
+            - obsh = getbalance + getmoney
+            = obsh
+            | руб.
+            span= t 'profile.getmoneys'
+        .stats_block_item.tasks
+          /.stats_block_quantity
+            = User.online.count
+            span= t 'profile.online_users'
+        .stats_block_item.compl
+          .stats_block_quantity
+            span игра идет уже:
+            #countdown
+            span
+    /javascript:
+    /  | var start = new Date('06/28/2017 10:1 AM');
+    /
+    /  | var _second = 1000;
+    /  | var _minute = _second * 60;
+    /  | var _hour = _minute * 60;
+    /  | var _day = _hour * 24;
+    /  | var timer;
+    /
+    /  | function showRemaining() {
+    /  | var now = new Date();
+    /  | var distance = start - now;
+    /  | var days = Math.floor(distance / _day);
+    /  | var hours = Math.floor((distance % _day) / _hour);
+    /  | var minutes = Math.floor((distance % _hour) / _minute);
+    /  | var seconds = Math.floor((distance % _minute) / _second);
+    /  | days = days.toString().replace(/^-+/i, '');
+    /  | hours = hours.toString().replace(/^-+/i, '');
+    /  | minutes = minutes.toString().replace(/^-+/i, '');
+    /  | seconds = seconds.toString().replace(/^-+/i, '');
+    /  | if(seconds.length == 1){
+    /    | seconds = '0' + seconds;
+    /    | }
+    /
+    /  | document.getElementById('countdown').innerHTML = days + '*';
+    /  | document.getElementById('countdown').innerHTML += hours + '*';
+    /  | document.getElementById('countdown').innerHTML += minutes + '*';
+    /  | document.getElementById('countdown').innerHTML += seconds;
+    /  | }
+    /
+    /  | timer = setInterval(showRemaining, 1000);
+    .doubt_block
+      .container
+        h2.top_block_title style=("color: #2fcaf1;") Всё ещё сомневаешься?
+        p Скорей решайся и не теряй возможность заработать миллионы.
+        p Старт игры начался относительно недавно, а это значит, что у тебя есть очень высокий шанс выиграша.
+        p Поспеши, пока не подтянулись конкуренты.
+        p Эта игра скоро будет в каждом компьютере!
+    /= render '/feedbacks/form'
+    .footer
+      .container
+        span.arrow_up ⌃
+        .footer_title Связаться с нами
+        .footer_social
+          a.footer_social_item href="http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st._surl=https://king-mountain.pro/&st.comments=ЦарьГоры" target="_blank"
+            img alt="OK" height="39" src="#{image_url('home/ic-ok.png')}" width="39" /
+          a.footer_social_item href="https://www.facebook.com/sharer.php?u=https://king-mountain.pro/" target="_blank"
+            img alt="Facebook" height="26" src="#{image_url('home/ic-fb.png')}" width="12" /
+          a.footer_social_item href="https://vk.com/share.php?url=https://king-mountain.pro/" target="_blank"
+            img alt="VK" height="18" src="#{image_url('home/ic-vk.png')}" width="30" /
+          a.footer_social_item href=("https://twitter.com/share?url=https://king-mountain.pro/&text=Царь Горы") target="_blank"
+            img alt="Twitter" height="20" src="#{image_url('home/ic-tw.png')}" width="24" /
+        .footer_logo
+          img alt=("Царь горы") height="45" src="#{image_url('home/footer_logo.png')}" width="109" /
+        .footer_copyright
+          | ООО Игра - “Царь горы” 2017 Все права защищены.
+        a href="//www.free-kassa.ru/"
+          img src="//www.free-kassa.ru/img/fk_btn/17.png" /
