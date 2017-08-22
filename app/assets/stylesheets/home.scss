@@ -646,7 +646,7 @@ body { font-family: "PT Sans", sans-serif; }
 .register_form_field input { display: block; width: 100%; padding: 12px 19px; font-size: 15px; color: #747474; background: #ededed; border: 1px solid transparent; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
 .register_form_submit { text-align: center; }
 .register_form_submit input { display: inline-block; padding: 13px 60px; margin-bottom: 15px; font-size: 22px; line-height: 26px; color: #fff; font-weight: 900; background: #49d793; text-transform: uppercase; border: none; cursor: pointer; text-decoration: none; -webkit-border-radius: 30px; -moz-border-radius: 30px; -ms-border-radius: 30px; -o-border-radius: 30px; border-radius: 30px; -webkit-transition: 0.2s; -moz-transition: 0.2s; -ms-transition: 0.2s; -o-transition: 0.2s; transition: 0.2s; }
-.register_form_submit input:hover { background: #2bc27a; }
+.register_form_submit input:hover { background: #2bc27a; color: white; }
 .register_form_social { margin-top: 25px; text-align: center; }
 .register_form_social_title { margin-bottom: 15px; font-size: 14px; line-height: 18px; color: #404040; font-weight: 700; }
 .register_form_social_item { display: inline-block; margin: 0 25px; vertical-align: middle; -webkit-filter: grayscale(100%); filter: grayscale(100%); }

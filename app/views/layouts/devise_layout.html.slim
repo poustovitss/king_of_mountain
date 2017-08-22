@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    title
+      = content_for?(:title) ? yield(:title) : 'King of Mountain'
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'King of Mountain'}"
+    == stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+    == csrf_meta_tags
+  body
+    .devise-background
+      == yield
+    .footer
+      .container
+        span.arrow_up ⌃
+        .footer_title Нравится наш сервис? Поделитесь в социальных сетях:
+        .footer_social
+          a.footer_social_item href="http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st._surl=https://king-mountain.pro/&st.comments=ЦарьГоры" target="_blank"
+            img alt="OK" height="39" src="#{image_url("/images/ic-ok.png")}" width="39" /
+          a.footer_social_item href="https://www.facebook.com/sharer.php?u=https://king-mountain.pro/" target="_blank"
+            img alt="Facebook" height="26" src="#{image_url("/images/ic-fb.png")}" width="12" /
+          a.footer_social_item href="https://vk.com/share.php?url=https://king-mountain.pro/" target="_blank"
+            img alt="VK" height="18" src="#{image_url("/images/ic-vk.png")}" width="30" /
+          a.footer_social_item href=("https://twitter.com/share?url=https://king-mountain.pro/&text=Царь Горы") target="_blank"
+            img alt="Twitter" height="20" src="#{image_url("/images/ic-tw.png")}" width="24" /
+        .footer_logo
+          img alt=("Царь горы") height="45" src="#{image_url("/images/footer_logo.png")}" width="109" /
+        .footer_copyright
+          | ООО Игра - “Царь горы” 2017 Все права защищены.

@@ -1,0 +1,25 @@
+.text-center
+  - if controller_name != 'sessions'
+    = link_to 'Войти', new_session_path(resource_name)
+    br
+  - if devise_mapping.registerable? && controller_name != 'registrations'
+    = link_to 'Регистрация', new_registration_path(resource_name)
+    br
+  - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+    = link_to 'Забыли пароль?', new_password_path(resource_name)
+    br
+  - if devise_mapping.confirmable? && controller_name != 'confirmations'
+    = link_to 'Подтвердить свой аккаунт', new_confirmation_path(resource_name)
+br
+  .text-center
+    .register_form_social_title
+      | #{controller_name == 'registrations' ? 'Регистрация' : 'Войти'} через соц. сети:
+  .register_form_social
+    a.register_form_social_item href='user_facebook_omniauth_authorize_path'
+      img alt="Facebook" height="26" src="#{image_url('home/ic-fb.png')}" width="12" /
+    a.register_form_social_item href='user_twitter_omniauth_authorize_path'
+      img alt="Twitter" height="20" src="#{image_url('home/ic-tw.png')}" width="24" /
+    a.register_form_social_item href='user_vkontakte_omniauth_authorize_path'
+      img alt="Twitter" height="20" src="#{image_url('home/ic-vk.png')}" width="24" /
+  - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+    = link_to 'Didn\'t receive unlock instructions?', new_unlock_path(resource_name)

@@ -1,0 +1,19 @@
+.devise-background {
+  background: white;
+}
+
+#error_explanation {
+  ul li {
+    list-style: none;
+  }
+}
+
+.user_remember_me {
+  input[type="checkbox"] {
+    margin: 3px 0 0 -20px;
+  }
+}
+
+span.error {
+  color: red;
+}

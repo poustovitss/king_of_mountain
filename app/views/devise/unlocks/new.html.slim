@@ -1,0 +1,10 @@
+= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+  .register_form
+    h1.register_form_title Отправить инструкцию для разблокировки
+    = f.full_error :unlock_token
+    .form-inputs
+      .register_form_field
+        = f.input :email, label: 'Почта', autofocus: true
+      .register_form_submit
+        = f.submit 'Отправить'
+    = render 'devise/shared/links'

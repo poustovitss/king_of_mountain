@@ -26,13 +26,13 @@ html lang="en"
                 a href='#' О сервисе
               li
                 a href='#' Контакты
-              - if 'user_signed_in?' && 'current_user.admin?' #TODO fix after user model
+              - if user_signed_in? && current_user.admin?
                 li
                   a href='#' Админ
-              - if 'user_signed_in?'
+              - if user_signed_in?
                 li
-                  a href='#' Профиль
-                li= link_to 'Выйти', '#', method: :delete
+                  a href='#{dashboard_path}' Профиль
+                li= link_to 'Выйти', destroy_user_session_path, method: :delete
                 li
                   button style=("background-color: rgba(255, 255, 255, 0); border-radius: 20px; border-color: #fff;")
                     a.sign_in href='new_order_path' Деньги
@@ -40,10 +40,10 @@ html lang="en"
               li style=('margin-left: 10px;')
                 = link_to_unless_current image_tag('home/en.png'), locale: 'en'
                 = link_to_unless_current image_tag('home/ru.png'), locale: 'ru'
-          - unless 'user_signed_in?'
+          - unless user_signed_in?
             .header_sign
-              a.sign_up href='#' style=('margin-top: 0;') Регистрация
-              a.sign_in href='#' Войти
+              a.sign_up href="#{new_user_registration_path}" style=('margin-top: 0;') Регистрация
+              a.sign_in href="#{new_user_session_path}" Войти
           div
         .mobile_btn
           span
@@ -68,7 +68,7 @@ html lang="en"
       .container
         h2 Самый лучший способ потратить 50 рублей
         p Купить вступление в игру Царь Горы и получить возможность пассивного дохода!
-        span style=("display: block; margin: 50px auto 37px auto; width: 490px; border-radius: 100%; height: 490px; background: url('/images/home/main_banner_crop.jpg') no-repeat center; background-size: cover; ")
+        span style=("display: block; margin: 50px auto 37px auto; width: 490px; border-radius: 100%; height: 490px; background: url('/images/main_banner_crop.jpg') no-repeat center; background-size: cover; ")
         br
         span ДЕЛАЙ ПРАВИЛЬНЫЙ ВЫБОР
         a href="#next-block"
