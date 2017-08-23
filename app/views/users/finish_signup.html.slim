@@ -1,0 +1,15 @@
+= simple_form_for(current_user, as: 'user', url: finish_signup_path(current_user), html: { role: 'form' }) do |f|
+  .register_form
+    h1.register_form_title Укажите почту
+    - if @show_errors && current_user.errors.any?
+      #error_explanation
+        - current_user.errors.full_messages.each do |msg|
+          = msg
+          br
+    .form-inputs
+      .register_form_fieldregister_form_fieldl
+        .register_form_field
+          = f.input :email, label: false, autofocus: true
+          p.help-block Пожалуйста, подтвердите Вашу электронную почту. Спама не будет:)
+      .register_form_submit
+        = f.submit 'Готово', class: 'btn btn-primary'
