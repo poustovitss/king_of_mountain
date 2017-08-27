@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
 
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
+  validates :name, presence: true, length: { minimum: 2, maximum: 32 }
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)

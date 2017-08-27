@@ -3,7 +3,7 @@
     h1.register_form_title Регистрация
     .form-inputs
       .register_form_field
-        = f.input :name, label: 'Имя', autofocus: true
+        = f.input :name, label: 'Имя', required: false, autofocus: true
       .register_form_field
         = f.input :email, label: 'Почта'
       .register_form_field
