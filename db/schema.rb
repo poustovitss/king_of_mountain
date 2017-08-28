@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823204838) do
+ActiveRecord::Schema.define(version: 20170828131003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170823204838) do
     t.bigint "user_id"
     t.string "provider"
     t.string "uid"
+    t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_identities_on_user_id"
@@ -43,14 +44,19 @@ ActiveRecord::Schema.define(version: 20170823204838) do
     t.boolean "admin", default: false
     t.boolean "provision", default: true
     t.integer "invited_by"
-    t.float "earned_amount"
+    t.float "earned_amount", default: 0.0
     t.string "skype"
     t.string "country"
     t.string "phone"
-    t.float "score"
-    t.float "balance"
+    t.float "score", default: 0.0
+    t.float "balance", default: 0.0
+    t.integer "sex"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
