@@ -39,8 +39,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :skype
       t.string :country
       t.string :phone
-      t.float :score
+      t.float :score, default: '0.0', nil: false
       t.float :balance, default: '0.0', nil: false
+      t.string :facebook_link
+      t.string :twitter_link
+      t.string :vk_link
+      t.integer :sex
       t.timestamps null: false
     end
 
