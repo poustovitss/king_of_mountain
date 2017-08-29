@@ -1,2 +1,5 @@
 ru:
   king_of_mountain: 'Царь горы'
+  time:
+    formats:
+      date_with_time: '%d.%m.%Y %H:%M'

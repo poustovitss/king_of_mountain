@@ -1,7 +1,37 @@
 body {
-  background-color: white;
+  background-color: #F7F7F7;
 }
 
 .alert {
   margin-bottom: 0px;
+}
+
+.profile_hr {
+  margin: 5px 0 5px 0;
+}
+
+.profile_det div {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  /* display: flex; */
+}
+
+.profile_det p {
+  max-width: 400px;
+  margin: 0;
+  width: 100%;
+}
+
+.verified_profile {
+  padding: 3px 5px;
+  margin-left: 5px;
+  background-color: green;
+}
+
+.unverified_profile {
+  padding: 3px 5px;
+  margin-left: 5px;
+  background-color: red;
 }

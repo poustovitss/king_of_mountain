@@ -2,6 +2,11 @@ class User < ApplicationRecord
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
+  enum sex: { male: 1, female: 2 }
+
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 2.megabytes
+
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
@@ -9,13 +14,23 @@ class User < ApplicationRecord
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
   validates :name, presence: true, length: { minimum: 2, maximum: 32 }
 
+  after_create :set_proviant
+
+  def set_proviant
+    self.provision = false unless invited_by.nil?
+  end
+
+  def facebook_link
+    Identity.find_by_user_id(id).try(:link)
+  end
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
     user = signed_in_resource ? signed_in_resource : identity.user
     if user.nil?
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
       email = auth.info.email if email_is_verified
-      user = User.where(:email => email).first if email
+      user = User.where(email: email).first if email
 
       if user.nil?
         user = User.new(

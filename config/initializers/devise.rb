@@ -253,8 +253,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'],
                   scope: 'email',
-                  callback_url: 'http://localhost:3000/users/auth/facebook/callback',
-                  display: 'popup'
+                  info_fields: 'name, link',
+                  callback_url: 'http://localhost:3000/users/auth/facebook/callback'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

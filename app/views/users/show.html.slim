@@ -1,0 +1,82 @@
+.row
+  .col-md-12.col-sm-12.col-xs-12
+    .x_panel
+      .x_title
+        h2
+          | #{@user.name}
+        ul.nav.navbar-right.panel_toolbox
+          li
+            a.collapse-link
+              i.fa.fa-chevron-up
+          li
+            a.close-link
+              i.fa.fa-close
+        .clearfix
+      .x_content
+        .col-md-3.col-sm-3.col-xs-12.profile_left
+          .profile_img
+            #crop-avatar
+              /! Current avatar
+              img src=asset_path('/images/img.jpg') alt="..." class="img-circle profile_img"
+              img.img-responsive.avatar-view alt="Avatar" src="images/picture.jpg" title=("Change the avatar") /
+          h3 Samuel Doe
+          ul.list-unstyled.user_data
+            li
+              i.fa.fa-map-marker.user-profile-icon
+              | San Francisco, California, USA
+            li
+              i.fa.fa-briefcase.user-profile-icon
+              | Software Engineer
+            li.m-top-xs
+              i.fa.fa-external-link.user-profile-icon
+              a href="http://www.kimlabs.com/profile/" target="_blank"  www.kimlabs.com
+          a.btn.btn-success
+            i.fa.fa-edit.m-right-xs
+            | Edit Profile
+          br/
+        .col-md-9.col-sm-9.col-xs-12
+          span ОСНОВНАЯ ИНФОРМАЦИЯ
+          a.flr href="#"  Редактировать
+          hr.profile_hr/
+          .profile_det
+            div
+              p Страна
+              a href="#"  Испания
+            hr.profile_hr/
+            div
+              p Город
+              a href="#"  Мадрид
+            hr.profile_hr/
+            div
+              p День рождения
+              a href="#"  25 марта 1982 г.
+            hr.profile_hr/
+            div
+              p
+                strong email
+              a href="#"
+            hr.profile_hr/
+            div
+              p Дата регистрации
+              a href="#"  23 фев 2016 в 02:34
+          br/
+          br/
+          span КОНТАКТЫ
+          a.flr href="#"  Редактировать
+          hr.profile_hr/
+          .profile_det
+            div
+              p Моб. телефон
+              a href="#"  Не указан
+            hr.profile_hr/
+            div
+              p Skype
+              a href="#"  Не указан
+            hr.profile_hr/
+            div
+              p VK
+              a href="#"  https://vk.com/feed
+            hr.profile_hr/
+            div
+              p Facebook
+              a href="#"  https://vk.com/feed

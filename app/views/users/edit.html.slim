@@ -1,0 +1,108 @@
+.row
+  .col-md-12.col-sm-12.col-xs-12
+    .x_panel
+      .x_title
+        h2
+          | Ваш профиль
+        ul.nav.navbar-right.panel_toolbox
+          li
+            a.collapse-link
+              i.fa.fa-chevron-up
+          li
+            a.close-link
+              i.fa.fa-close
+        .clearfix
+      .x_content
+        .col-md-3.col-sm-3.col-xs-12.profile_left
+          .profile_img
+            #crop-avatar
+              img.img-responsive.avatar-view alt="Avatar" src=asset_path('/images/img.jpg') title=("Change the avatar") /
+          h3
+            = current_user.name
+            = profile_status
+          = verify_account
+          ul.list-unstyled.user_data
+            li
+              i.fa.fa-money.user-profile-icon
+              |  Заработано: 1 000 $
+            li
+              i.fa.fa-briefcase.user-profile-icon
+              |  Текущий баланс: 14,88 $
+            li.m-top-xs
+              i.fa.fa-gift.user-profile-icon
+              |  Баллы: 100
+          = money_withdraw
+          br
+          a.btn.btn-default
+            i.fa.fa-edit.m-right-xs
+            |  Редактировать профиль
+          br
+        .col-md-9.col-sm-9.col-xs-12
+          span ИНФОРМАЦИЯ ПО ПАКЕТУ
+          hr.profile_hr
+          .profile_det
+            div
+              p Пакет
+              a href="#"  Монблан-50
+            hr.profile_hr
+            div
+              p Уровень
+              a href="#"  1
+            hr.profile_hr
+            div
+              p Провиант
+              a href="#"  1 / 10
+            hr.profile_hr
+          br
+          br
+        .col-md-9.col-sm-9.col-xs-12
+          span ОСНОВНАЯ ИНФОРМАЦИЯ
+          hr.profile_hr
+          .profile_det
+            div
+              p Ваш id
+              a href="#" = current_user.id
+            hr.profile_hr
+            div
+              p Ваша реферальная ссылка
+              a href="#{referral_link_of_current_user}" = referral_link_of_current_user
+            hr.profile_hr
+            div
+              p Пол
+              a href="#" = current_user.sex
+            hr.profile_hr
+            div
+              p Почта
+              a href="#"  = current_user.email
+            hr.profile_hr
+            div
+              p Страна
+              a href="#"  = current_user.country
+            hr.profile_hr
+            div
+              p Дата регистрации
+              a href="#"  = time_format(current_user.created_at)
+          br
+          br
+          span КОНТАКТЫ
+          hr.profile_hr
+          .profile_det
+            div
+              p Моб. телефон
+              a href="#"  = current_user.phone
+            hr.profile_hr
+            div
+              p Skype
+              a href="#"  Не указан
+            hr.profile_hr
+            div
+              p VK
+              a href="#"  https://vk.com/feed
+            hr.profile_hr
+            div
+              p Facebook
+              a href="#{current_user.facebook_link}" target="_blank" Перейти
+            hr.profile_hr
+              div
+                p Twitter
+                a href="#"  https://vk.com/feed
