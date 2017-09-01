@@ -3,7 +3,7 @@
     .x_panel
       .x_title
         h2
-          | Пользователь #{@user.name}
+          | Ваш профиль
         ul.nav.navbar-right.panel_toolbox
           li
             a.collapse-link
@@ -16,16 +16,26 @@
         .col-md-3.col-sm-3.col-xs-12.profile_left
           .profile_img
             #crop-avatar
-              img.img-responsive.avatar-view alt="Аватар" src=@user.avatar title=("Change the avatar") /
+              img.img-responsive.avatar-view alt="Аватар" src=current_user.avatar title=("Change the avatar") /
           h3
-            = @user.name
+            = current_user.name
+            = profile_status
+          = verify_account
           ul.list-unstyled.user_data
             li
               i.fa.fa-money.user-profile-icon
               |  Заработано: 1 000 $
+            li
+              i.fa.fa-briefcase.user-profile-icon
+              |  Текущий баланс: 14,88 $
             li.m-top-xs
               i.fa.fa-gift.user-profile-icon
               |  Баллы: 100
+          = money_withdraw
+          br
+          a.btn.btn-default href=edit_user_path(current_user)
+            i.fa.fa-edit.m-right-xs
+            |  Редактировать профиль
           br
         .col-md-9.col-sm-9.col-xs-12
           span ИНФОРМАЦИЯ ПО ПАКЕТУ
@@ -50,24 +60,28 @@
           hr.profile_hr
           .profile_det
             div
-              p Id
-              a href="#" = @user.id
+              p Ваш id
+              a href="#" = current_user.id
+            hr.profile_hr
+            div
+              p Ваша реферальная ссылка
+              a href="#{referral_link_of_current_user}" = referral_link_of_current_user
             hr.profile_hr
             div
               p Пол
-              a href="#" = @user.sex
+              a href="#" = current_user.sex
             hr.profile_hr
             div
               p Почта
-              a href="#" = @user.email
+              a href="#"  = current_user.email
             hr.profile_hr
             div
               p Страна
-              a href="#" = @user.country
+              a href="#"  = current_user.country
             hr.profile_hr
             div
               p Дата регистрации
-              a href="#" = time_format(current_user.created_at)
+              a href="#"  = time_format(current_user.created_at)
           br
           br
           span КОНТАКТЫ
@@ -75,20 +89,20 @@
           .profile_det
             div
               p Моб. телефон
-              a href="#" = @user.phone
+              a href="#"  = current_user.phone
             hr.profile_hr
             div
               p Skype
-              a href="#" = @user.skype
+              a href="#" = current_user.skype
             hr.profile_hr
             div
               p VK
-              a href="#{@user.vk_link}" target="_blank" = @user.vk_link
+              a href="#{current_user.vk_link}" target="_blank" = current_user.vk_link
             hr.profile_hr
             div
               p Facebook
-              a href="#{@user.facebook_link}" target="_blank" = @user.fb_link
+              a href="#{current_user.fb_link}" target="_blank" = current_user.fb_link
             hr.profile_hr
             div
               p Twitter
-              a href="#{@user.tw_link}" = @user.tw_link
+              a href="#{current_user.tw_link}" target="_blank" = current_user.tw_link

@@ -12,9 +12,7 @@
       .profile_info
         span Приветствую,
         h2= current_user.name
-
     br
-
     #sidebar-menu.main_menu_side.hidden-print.main_menu
       .menu_section
         h3 Панель управления
@@ -30,7 +28,7 @@
               li
                 a href="#"  Пополнить
               li
-                a href="#"  Профиль
+                a href=profile_user_path(current_user)  Профиль
               li
                 a href="#"  Общий чат
           li

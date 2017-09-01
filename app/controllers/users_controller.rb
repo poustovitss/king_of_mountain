@@ -1,20 +1,24 @@
 class UsersController < ApplicationController
   include ProfileHelper
+  respond_to :html
 
   layout 'devise_layout', only: :finish_signup
-  before_action :set_user, only: [:finish_signup, :show, :update]
-  before_action :check_user, only: [:edit, :update]
+  before_action :set_user, only: [:finish_signup, :show, :edit, :profile]
+  before_action :check_user, only: [:edit, :update, :profile]
 
-  def show
+  def show; end
 
-  end
+  def profile; end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
-
+    if current_user.update(user_params)
+      bypass_sign_in current_user
+      redirect_to profile_user_path, notice: 'Ваш профиль был успешно обновлён.'
+    else
+      redirect_back(fallback_location: root_path, alert: current_user.errors.full_messages.join(" ").html_safe)
+    end
   end
 
   def finish_signup
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user ||= User.find(params[:id])
   end
 
   def check_user
@@ -41,7 +45,8 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    accessible = [ :name, :email ] # extend with your own params
+    accessible = [ :name, :email, :avatar, :sex, :country, :phone, :skype,
+                   :vk_link, :fb_link, :tw_link ] # extend with your own params
     accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
     params.require(:user).permit(accessible)
   end

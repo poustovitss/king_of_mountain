@@ -4,8 +4,10 @@ class User < ApplicationRecord
 
   enum sex: { male: 1, female: 2 }
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, default_url: '/images/img.jpg'
   validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 2.megabytes
+  validates_with AttachmentContentTypeValidator, attributes: :avatar,
+                 content_type: ['image/jpg', 'image/jpeg', 'image/png']
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,

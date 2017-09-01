@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resource :dashboard
-  resources :users
+  resources :users do
+    get 'profile', to: 'users#profile', as: 'profile', on: :member
+  end
 end
