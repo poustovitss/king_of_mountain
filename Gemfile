@@ -25,6 +25,7 @@ gem 'bootstrap-sass'
 gem 'slim-rails'
 gem 'font-awesome-rails'
 gem 'simple_form'
+gem 'country_select'
 gem 'gentelella-rails'
 
 gem 'devise'
