@@ -22,4 +22,139 @@
       .x_content
         .row
           .col-md-12
-            | Hello world!
+            - @packages.each do |package|
+              div class=("col-md-3 col-sm-6 col-xs-12 #{'disabled-package' unless package.active}")
+                .pricing
+                  .title
+                    h2= package.name
+                    h1= package.price.format
+                    span= package.active? ? 'Активный' : 'Неактивный'
+                  .x_content
+                    div
+                      .pricing_features style=("min-height: 0px;")
+                        ul.list-unstyled.text-left
+                          li
+                            i.fa.fa-check.text-success
+                            = package.max_levels
+                            | уровней. Прогресс 0/#{package.max_progress}
+                            br
+                            | Общая прибыль #{package.profit.format}
+                    .pricing_footer
+                      - if current_user.own_package?(package)
+                        a.btn.btn-primary.btn-block href="javascript:void(0);" role="button"  Войти в комнату
+                      - else
+                        a.btn.btn-success.btn-block href="javascript:void(0);" role="button"  Купить
+                      p
+                        a href="javascript:void(0);"  Подробнее
+      .clearfix
+    .row.tile_count
+      .col-md-2.col-sm-4.col-xs-6.tile_stats_count
+        span.count_top
+          i.fa.fa-user
+          | Ваши рефералы
+        .count= current_user.invited_users.count
+        span.count_bottom
+          i.green
+            | +#{current_user.invited_users.where("created_at >= ?", Time.zone.now.beginning_of_day).size}
+          | Сегодня
+      .col-md-2.col-sm-4.col-xs-6.tile_stats_count
+        span.count_top
+          i.fa.fa-clock-o
+          | Вы пришли от
+        .count
+          - if current_user.invited_by.nil?
+            | \-
+          - else
+            = current_user.referal.name
+        span.count_bottom Задать вопрос
+      .col-md-2.col-sm-4.col-xs-6.tile_stats_count
+        span.count_top
+          i.fa.fa-user
+          | Свободный балланс
+        .count.green 1488
+        span.count_bottom
+          i.red
+            i.fa.fa-sort-asc
+            | +12
+          | Сегодня
+      .col-md-2.col-sm-4.col-xs-6.tile_stats_count
+        span.count_top
+          i.fa.fa-user
+          | Счетчик активности
+        .count 02:31
+        span.count_bottom
+          i.green
+            i.fa.fa-sort-desc
+            | 15
+          | Баллов
+      .col-md-2.col-sm-4.col-xs-6.tile_stats_count
+        span.count_top
+          i.fa.fa-user
+          | Баллы
+        .count
+          - if current_user.score.nil?
+            | 0
+          - else
+            = current_user.score.round(2)
+        span.count_bottom
+          i.green
+            i.fa.fa-sort-asc
+            | 34
+          | Сегодня
+      .col-md-2.col-sm-4.col-xs-6.tile_stats_count
+        span.count_top
+          i.fa.fa-user
+          | Участников
+        .count= User.all.count
+        span.count_bottom
+          i.green
+            i.fa.fa-sort-asc
+            | +#{User.where("created_at >= ?", Time.zone.now.beginning_of_day).size}
+          | Cегодня
+    .col-md-4.col-sm-6.col-xs-12
+      .x_panel
+        .x_title
+          h2 Баллы за пост
+          ul.nav.navbar-right.panel_toolbox
+            li
+              a.collapse-link
+                i.fa.fa-chevron-up
+            li.dropdown
+              a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="#" role="button"
+                i.fa.fa-wrench
+              ul.dropdown-menu role="menu"
+                li
+                  a href="#"  Settings 1
+                li
+                  a href="#"  Settings 2
+            li
+              a.close-link
+                i.fa.fa-close
+          .clearfix
+        .x_content.minh
+          .row
+            .col-md-12.col-sm-12.col-xs-12
+              p Сделай пост в соцсетях и зарабатывай баллы
+              .soc_link
+                a href="#"
+                  i.fa.fa-google-plus aria-hidden="true"
+                a href="#"
+                  i.fa.fa-facebook aria-hidden="true"
+                a href="#"
+                  i.fa.fa-vk aria-hidden="true"
+                a href="#"
+                  i.fa.fa-odnoklassniki aria-hidden="true"
+                a href="#"
+                  i.fa.fa-twitter aria-hidden="true"
+                a href="#"
+                  i.fa.fa-instagram aria-hidden="true"
+              .referal_link
+                p Ваша реферальная ссылка
+                div
+                  input#copy_link readonly="readonly" type="text" value=("#{new_user_registration_url(invited_by: current_user.id)}") /
+                  button.btn-clipboard.btn-success data-clipboard-target="#copy_link"  Копировать
+              button.btn-success.btn_for_friend Поделись с другом
+              .referal_statistic
+                p.flr 10
+                div style=("clear: both;")
+                p.fll Заработано баллов

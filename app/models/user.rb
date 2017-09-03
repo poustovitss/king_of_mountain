@@ -22,6 +22,14 @@ class User < ApplicationRecord
     self.provision = false unless invited_by.nil?
   end
 
+  def invited_users
+    User.where(invited_by: id)
+  end
+
+  def referal
+    User.find(invited_by)
+  end
+
   def facebook_link
     Identity.find_by_user_id(id).try(:link)
   end
