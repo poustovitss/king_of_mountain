@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
       redirect_to finish_signup_path(current_user)
     end
   end
+
+  def access_denied(exception)
+    redirect_to dashboard_path, alert: exception.message
+  end
 end
