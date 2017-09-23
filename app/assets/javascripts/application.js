@@ -1,7 +1,5 @@
 //= require rails-ujs
 //= require turbolinks
-//= require gentelella
-//= require gentelella-custom
 //= require_tree .
 
 $('document').ready(function() {
