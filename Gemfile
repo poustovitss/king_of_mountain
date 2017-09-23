@@ -19,12 +19,11 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
 gem 'slim-rails'
 gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'country_select'
+gem 'kaminari'
 
 gem 'devise'
 gem 'devise_lastseenable'
