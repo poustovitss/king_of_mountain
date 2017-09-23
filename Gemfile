@@ -21,7 +21,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-gem 'bootstrap-sass'
 gem 'slim-rails'
 gem 'font-awesome-rails'
 gem 'simple_form'
