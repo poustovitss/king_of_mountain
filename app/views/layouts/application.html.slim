@@ -9,17 +9,569 @@ html
 
     = csrf_meta_tags
     = favicon_link_tag 'favicon.ico'
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
-    = stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track' => 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+    = stylesheet_link_tag 'matrix-design', media: 'all', 'data-turbolinks-track' => 'reload'
+    = javascript_include_tag 'matrix_design', 'data-turbolinks-track' => 'reload'
 
-  body.nav-md
-    = render 'layouts/messages'
-    .container.body
-      .main_container
-        = render 'layouts/left_menu'
-        = render 'layouts/top_menu'
-      .right_col role='main'
-        div
-          .clearfix
-          == yield
+  body
+    == render 'layouts/messages'
+    /! Header-part
+    #header
+      h1
+        a href="dashboard.html"  Matrix Admin
+    /! close-Header-part
+    /! top-Header-menu
+    #user-nav.navbar.navbar-inverse
+      ul.nav
+        li#profile-messages.dropdown
+          a.dropdown-toggle data-target="#profile-messages" data-toggle="dropdown" href="#" title=""
+            i.icon.icon-user
+            span.text Welcome User
+            b.caret
+          ul.dropdown-menu
+            li
+              a href="#"
+                i.icon-user
+                | My Profile
+            li.divider
+            li
+              a href="#"
+                i.icon-check
+                | My Tasks
+            li.divider
+            li
+              a href="login.html"
+                i.icon-key
+                | Log Out
+        li#menu-messages.dropdown
+          a.dropdown-toggle data-target="#menu-messages" data-toggle="dropdown" href="#"
+            i.icon.icon-envelope
+            span.text Messages
+            span.label.label-important 5
+            b.caret
+          ul.dropdown-menu
+            li
+              a.sAdd href="#" title=""
+                i.icon-plus
+                | new message
+            li.divider
+            li
+              a.sInbox href="#" title=""
+                i.icon-envelope
+                | inbox
+            li.divider
+            li
+              a.sOutbox href="#" title=""
+                i.icon-arrow-up
+                | outbox
+            li.divider
+            li
+              a.sTrash href="#" title=""
+                i.icon-trash
+                | trash
+        li
+          a href="#" title=""
+            i.icon.icon-cog
+            span.text Settings
+        li
+          a href="login.html" title=""
+            i.icon.icon-share-alt
+            span.text Logout
+    /! close-top-Header-menu
+    /! start-top-serch
+    #search
+      input placeholder=("Search here...") type="text" /
+      button.tip-bottom title="Search" type="submit"
+        i.icon-search.icon-white
+    /! close-top-serch
+    /! sidebar-menu
+    #sidebar
+      a.visible-phone href="#"
+        i.icon.icon-home
+        | Dashboard
+      ul
+        li.active
+          a href="index.html"
+            i.icon.icon-home
+            span Dashboard
+        li
+          a href="charts.html"
+            i.icon.icon-signal
+            span Charts &amp; graphs
+        li
+          a href="widgets.html"
+            i.icon.icon-inbox
+            span Widgets
+        li
+          a href="tables.html"
+            i.icon.icon-th
+            span Tables
+        li
+          a href="grid.html"
+            i.icon.icon-fullscreen
+            span Full width
+        li.submenu
+          a href="#"
+            i.icon.icon-th-list
+            span Forms
+            span.label.label-important 3
+          ul
+            li
+              a href="form-common.html"  Basic Form
+            li
+              a href="form-validation.html"  Form with Validation
+            li
+              a href="form-wizard.html"  Form with Wizard
+        li
+          a href="buttons.html"
+            i.icon.icon-tint
+            span Buttons &amp; icons
+        li
+          a href="interface.html"
+            i.icon.icon-pencil
+            span Eelements
+        li.submenu
+          a href="#"
+            i.icon.icon-file
+            span Addons
+            span.label.label-important 5
+          ul
+            li
+              a href="index2.html"  Dashboard2
+            li
+              a href="gallery.html"  Gallery
+            li
+              a href="calendar.html"  Calendar
+            li
+              a href="invoice.html"  Invoice
+            li
+              a href="chat.html"  Chat option
+        li.submenu
+          a href="#"
+            i.icon.icon-info-sign
+            span Error
+            span.label.label-important 4
+          ul
+            li
+              a href="error403.html"  Error 403
+            li
+              a href="error404.html"  Error 404
+            li
+              a href="error405.html"  Error 405
+            li
+              a href="error500.html"  Error 500
+        li.content
+          span Monthly Bandwidth Transfer
+          .progress.progress-mini.progress-danger.active.progress-striped
+            .bar style=("width: 77%;")
+          span.percent 77%
+          .stat 21419.94 / 14000 MB
+        li.content
+          span Disk Space Usage
+          .progress.progress-mini.active.progress-striped
+            .bar style=("width: 87%;")
+          span.percent 87%
+          .stat 604.44 / 4000 MB
+    /! sidebar-menu
+    /! main-container-part
+    #content
+      /! breadcrumbs
+      #content-header
+        #breadcrumb
+          a.tip-bottom href="index.html" title=("Go to Home")
+            i.icon-home
+            | Home
+      /! End-breadcrumbs
+      /! Action boxes
+      .container-fluid
+        .quick-actions_homepage
+          ul.quick-actions
+            li.bg_lb
+              a href="index.html"
+                i.icon-dashboard
+                span.label.label-important 20
+                | My Dashboard
+            li.bg_lg.span3
+              a href="charts.html"
+                i.icon-signal
+                | Charts
+            li.bg_ly
+              a href="widgets.html"
+                i.icon-inbox
+                span.label.label-success 101
+                | Widgets
+            li.bg_lo
+              a href="tables.html"
+                i.icon-th
+                | Tables
+            li.bg_ls
+              a href="grid.html"
+                i.icon-fullscreen
+                | Full width
+            li.bg_lo.span3
+              a href="form-common.html"
+                i.icon-th-list
+                | Forms
+            li.bg_ls
+              a href="buttons.html"
+                i.icon-tint
+                | Buttons
+            li.bg_lb
+              a href="interface.html"
+                i.icon-pencil
+                | Elements
+            li.bg_lg
+              a href="calendar.html"
+                i.icon-calendar
+                | Calendar
+            li.bg_lr
+              a href="error404.html"
+                i.icon-info-sign
+                | Error
+        /! End-Action boxes
+        /! Chart-box
+        .row-fluid
+          .widget-box
+            .widget-title.bg_lg
+              span.icon
+                i.icon-signal
+              h5 Site Analytics
+            .widget-content
+              .row-fluid
+                .span9
+                  .chart
+                .span3
+                  ul.site-stats
+                    li.bg_lh
+                      i.icon-user
+                      strong 2540
+                      small Total Users
+                    li.bg_lh
+                      i.icon-plus
+                      strong 120
+                      small New Users
+                    li.bg_lh
+                      i.icon-shopping-cart
+                      strong 656
+                      small Total Shop
+                    li.bg_lh
+                      i.icon-tag
+                      strong 9540
+                      small Total Orders
+                    li.bg_lh
+                      i.icon-repeat
+                      strong 10
+                      small Pending Orders
+                    li.bg_lh
+                      i.icon-globe
+                      strong 8540
+                      small Online Orders
+        /! End-Chart-box
+        hr/
+        .row-fluid
+          .span6
+            .widget-box
+              .widget-title.bg_ly data-toggle="collapse" href="#collapseG2"
+                span.icon
+                  i.icon-chevron-down
+                h5 Latest Posts
+              #collapseG2.widget-content.nopadding.collapse.in
+                ul.recent-posts
+                  li
+                    .user-thumb
+                      img alt="User" height="40" src="#{asset_path('img/demo/av1.jpg')}" width="40" /
+                    .article-post
+                      span.user-info By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM
+                      p
+                        a href="#"  This is a much longer one that will go on for a few lines.It has multiple paragraphs and is full of waffle to pad out the comment.
+                  li
+                    .user-thumb
+                      img alt="User" height="40" src="#{asset_path('img/demo/av2.jpg')}" width="40" /
+                    .article-post
+                      span.user-info By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM
+                      p
+                        a href="#"  This is a much longer one that will go on for a few lines.It has multiple paragraphs and is full of waffle to pad out the comment.
+                  li
+                    .user-thumb
+                      img alt="User" height="40" src="#{asset_path('img/demo/av4.jpg')}" width="40" /
+                    .article-post
+                      span.user-info By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM
+                      p
+                        a href="#"  This is a much longer one that will go on for a few lines.Itaffle to pad out the comment.
+                  li
+                    button.btn.btn-warning.btn-mini View All
+            .widget-box
+              .widget-title
+                span.icon
+                  i.icon-ok
+                h5 To Do list
+              .widget-content
+                .todo
+                  ul
+                    li.clearfix
+                      .txt
+                        | Luanch This theme on Themeforest
+                        span.by.label Alex
+                      .pull-right
+                        a.tip href="#" title=("Edit Task")
+                          i.icon-pencil
+                        a.tip href="#" title="Delete"
+                          i.icon-remove
+                    li.clearfix
+                      .txt
+                        | Manage Pending Orders
+                        span.date.badge.badge-warning Today
+                      .pull-right
+                        a.tip href="#" title=("Edit Task")
+                          i.icon-pencil
+                        a.tip href="#" title="Delete"
+                          i.icon-remove
+                    li.clearfix
+                      .txt
+                        | MAke your desk clean
+                        span.by.label Admin
+                      .pull-right
+                        a.tip href="#" title=("Edit Task")
+                          i.icon-pencil
+                        a.tip href="#" title="Delete"
+                          i.icon-remove
+                    li.clearfix
+                      .txt
+                        | Today we celebrate the theme
+                        span.date.badge.badge-info 08.03.2013
+                      .pull-right
+                        a.tip href="#" title=("Edit Task")
+                          i.icon-pencil
+                        a.tip href="#" title="Delete"
+                          i.icon-remove
+                    li.clearfix
+                      .txt
+                        | Manage all the orders
+                        span.date.badge.badge-important 12.03.2013
+                      .pull-right
+                        a.tip href="#" title=("Edit Task")
+                          i.icon-pencil
+                        a.tip href="#" title="Delete"
+                          i.icon-remove
+            .widget-box
+              .widget-title
+                span.icon
+                  i.icon-ok
+                h5 Progress Box
+              .widget-content
+                ul.unstyled
+                  li
+                    span.icon24.icomoon-icon-arrow-up-2.green
+                    | 81% Clicks
+                    span.pull-right.strong 567
+                    .progress.progress-striped
+                      .bar style=("width: 81%;")
+                  li
+                    span.icon24.icomoon-icon-arrow-up-2.green
+                    | 72% Uniquie Clicks
+                    span.pull-right.strong 507
+                    .progress.progress-success.progress-striped
+                      .bar style=("width: 72%;")
+                  li
+                    span.icon24.icomoon-icon-arrow-down-2.red
+                    | 53% Impressions
+                    span.pull-right.strong 457
+                    .progress.progress-warning.progress-striped
+                      .bar style=("width: 53%;")
+                  li
+                    span.icon24.icomoon-icon-arrow-up-2.green
+                    | 3% Online Users
+                    span.pull-right.strong 8
+                    .progress.progress-danger.progress-striped
+                      .bar style=("width: 3%;")
+            .widget-box
+              .widget-title.bg_lo data-toggle="collapse" href="#collapseG3"
+                span.icon
+                  i.icon-chevron-down
+                h5 News updates
+              #collapseG3.widget-content.nopadding.updates.collapse.in
+                .new-update.clearfix
+                  i.icon-ok-sign
+                  .update-done
+                    a href="#" title=""
+                      strong Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    span dolor sit amet, consectetur adipiscing eli
+                  .update-date
+                    span.update-day> 20
+                    | jan
+                .new-update.clearfix
+                  i.icon-gift
+                  span.update-notice
+                    a href="#" title=""
+                      strong Congratulation Maruti, Happy Birthday
+                    span many many happy returns of the day
+                  span.update-date
+                    span.update-day> 11
+                    | jan
+                .new-update.clearfix
+                  i.icon-move
+                  span.update-alert
+                    a href="#" title=""
+                      strong Maruti is a Responsive Admin theme
+                    span But already everything was solved. It will ...
+                  span.update-date
+                    span.update-day> 07
+                    | Jan
+                .new-update.clearfix
+                  i.icon-leaf
+                  span.update-done
+                    a href="#" title=""
+                      strong Envato approved Maruti Admin template
+                    span i am very happy to approved by TF
+                  span.update-date
+                    span.update-day> 05
+                    | jan
+                .new-update.clearfix
+                  i.icon-question-sign
+                  span.update-notice
+                    a href="#" title=""
+                      strong I am alwayse here if you have any question
+                    span we glad that you choose our template
+                  span.update-date
+                    span.update-day> 01
+                    | jan
+          .span6
+            .widget-box.widget-chat
+              .widget-title.bg_lb
+                span.icon
+                  i.icon-comment
+                h5 Chat Option
+              #collapseG4.widget-content.nopadding.collapse.in
+                .chat-users.panel-right2
+                  .panel-title
+                    h5 Online Users
+                  .panel-content.nopadding
+                    ul.contact-list
+                      li#user-Alex.online
+                        a href=""
+                          img alt="" src="img/demo/av1.jpg" /
+                          span Alex
+                      li#user-Linda
+                        a href=""
+                          img alt="" src="img/demo/av2.jpg" /
+                          span Linda
+                      li#user-John.online.new
+                        a href=""
+                          img alt="" src="img/demo/av3.jpg" /
+                          span John
+                        span.msg-count.badge.badge-info 3
+                      li#user-Mark.online
+                        a href=""
+                          img alt="" src="img/demo/av4.jpg" /
+                          span Mark
+                      li#user-Maxi.online
+                        a href=""
+                          img alt="" src="img/demo/av5.jpg" /
+                          span Maxi
+                .chat-content.panel-left2
+                  #chat-messages.chat-messages
+                    #chat-messages-inner
+                  .chat-message.well
+                    button.btn.btn-success Send
+                    span.input-box
+                      input#msg-box name="msg-box" type="text" /
+            .widget-box
+              .widget-title
+                span.icon
+                  i.icon-user
+                h5 Our Partner (Box with Fix height)
+              .widget-content.nopadding.fix_hgt
+                ul.recent-posts
+                  li
+                    .user-thumb
+                      img alt="User" height="40" src="img/demo/av1.jpg" width="40" /
+                    .article-post
+                      span.user-info John Deo
+                      p Web Desginer &amp; creative Front end developer
+                  li
+                    .user-thumb
+                      img alt="User" height="40" src="img/demo/av2.jpg" width="40" /
+                    .article-post
+                      span.user-info John Deo
+                      p Web Desginer &amp; creative Front end developer
+                  li
+                    .user-thumb
+                      img alt="User" height="40" src="img/demo/av4.jpg" width="40" /
+                    .article-post
+                      span.user-info John Deo
+                      p Web Desginer &amp; creative Front end developer
+            #collapse-group.accordion
+              .accordion-group.widget-box
+                .accordion-heading
+                  .widget-title
+                    a data-parent="#collapse-group" data-toggle="collapse" href="#collapseGOne"
+                      span.icon
+                        i.icon-magnet
+                      h5 Accordion Example 1
+                #collapseGOne.collapse.in.accordion-body
+                  .widget-content It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.
+              .accordion-group.widget-box
+                .accordion-heading
+                  .widget-title
+                    a data-parent="#collapse-group" data-toggle="collapse" href="#collapseGTwo"
+                      span.icon
+                        i.icon-magnet
+                      h5 Accordion Example 2
+                #collapseGTwo.collapse.accordion-body
+                  .widget-content And is full of waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.
+              .accordion-group.widget-box
+                .accordion-heading
+                  .widget-title
+                    a data-parent="#collapse-group" data-toggle="collapse" href="#collapseGThree"
+                      span.icon
+                        i.icon-magnet
+                      h5 Accordion Example 3
+                #collapseGThree.collapse.accordion-body
+                  .widget-content Waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just
+            .widget-box.collapsible
+              .widget-title
+                a data-toggle="collapse" href="#collapseOne"
+                  span.icon
+                    i.icon-arrow-right
+                  h5 Toggle, Open by default,
+              #collapseOne.collapse.in
+                .widget-content This box is opened by default, paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.
+              .widget-title
+                a data-toggle="collapse" href="#collapseTwo"
+                  span.icon
+                    i.icon-remove
+                  h5 Toggle, closed by default
+              #collapseTwo.collapse
+                .widget-content This box is now open
+              .widget-title
+                a data-toggle="collapse" href="#collapseThree"
+                  span.icon
+                    i.icon-remove
+                  h5 Toggle, closed by default
+              #collapseThree.collapse
+                .widget-content This box is now open
+            .widget-box
+              .widget-title
+                ul.nav.nav-tabs
+                  li.active
+                    a data-toggle="tab" href="#tab1"  Tab1
+                  li
+                    a data-toggle="tab" href="#tab2"  Tab2
+                  li
+                    a data-toggle="tab" href="#tab3"  Tab3
+              .widget-content.tab-content
+                #tab1.tab-pane.active
+                  p And is full of waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.multiple paragraphs and is full of waffle to pad out the comment.
+                  img alt="demo-image" src="img/demo/demo-image1.jpg" /
+                #tab2.tab-pane
+                  img alt="demo-image" src="img/demo/demo-image2.jpg" /
+                  p And is full of waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.multiple paragraphs and is full of waffle to pad out the comment.
+                #tab3.tab-pane
+                  p And is full of waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.multiple paragraphs and is full of waffle to pad out the comment.
+                  img alt="demo-image" src="img/demo/demo-image3.jpg" /
+    /! end-main-container-part
+    /! Footer-part
+    .row-fluid
+      #footer.span12
+        | 2013 © Matrix Admin. Brought to you by
+        a href="http://themedesigner.in"  Themedesigner.in
+    == yield
