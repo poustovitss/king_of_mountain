@@ -73,7 +73,7 @@
               hr.profile_hr
               div
                 p Пол
-                = f.input :sex, collection: User.sexes.keys.to_a, label: false
+                = f.input :sex, collection: User.sexes.keys.to_a, label: false, class: 'form-control'
               hr.profile_hr
               div
                 p Почта
